@@ -25,7 +25,7 @@ class Users(models.Model):
     name2 = fields.Char(related='partner_id.name', store=True)
     complete_name = fields.Char(string='Complete Name', compute='_compute_complete_name', store=True)
     dace_id = fields.Many2one('res.dace', string='Dace Assignation')
-    parent_user_id = fields.Many2one('res.users', string='Parent', index=True)
+    parent_user_id = fields.Many2one('res.users', string='Parent', index=True, ondelete='restrict')
     child_user_ids = fields.One2many('res.users', 'parent_user_id', string='Childs')
     parent_left = fields.Integer('Left Parent', index=True)
     parent_right = fields.Integer('Right Parent', index=True)
