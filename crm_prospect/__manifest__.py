@@ -1,6 +1,6 @@
 {
     'name': 'Prospecto',
-    'version': '4.0',
+    'version': '5.0',
     'summary': 'Permite registrar Prospectos',
     'sequence': 40,
     'description': """
@@ -17,9 +17,9 @@
     'data': [
         'security/crm_prospect_security.xml',
         'security/ir.model.access.csv',
+		'views/crm_kpi_view.xml',
 		'views/crm_prospect_menu.xml',
         'data/ir_sequence_data.xml',
-        'views/crm_kpi_view.xml',
         'views/res_users_views.xml',
         'views/crm_prospect_views.xml',
         'views/product_view.xml',
