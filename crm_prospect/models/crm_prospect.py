@@ -14,7 +14,7 @@ class Lead(models.Model):
     quantity = fields.Integer(string='Quantity')
     principal_contact = fields.Many2one('res.partner', string="Principal contact")
     dace_id = fields.Many2one('res.dace', string='Dace')
-    code = fields.Char(string='Code', copy=False, readonly=True, index=True, default=lambda self: _('New'))
+    code = fields.Char(string='Code', copy=False, readonly=True, index=True, default=lambda self: '000')
     prospect_meeting_count = fields.Integer('# Meetings', compute='_compute_prospect_meeting_count')
 
     @api.multi
@@ -58,7 +58,7 @@ class Lead(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get('code', _('New')) == _('New'):
+        if vals.get('code', '000') == '000':
             if 'company_id' in vals:
                 vals['code'] = self.env['ir.sequence'].with_context(force_company=vals['company_id']).next_by_code(
                     'crm.prospect.seq') or _('New')
